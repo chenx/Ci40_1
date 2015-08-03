@@ -1,0 +1,11 @@
+c:\inetpub\wwwroot\Ci40_1\Scripts\backup
+c:\inetpub\wwwroot\Ci40_1\Scripts\multiselect
+c:\inetpub\wwwroot\Ci40_1\Scripts\jquery-1.10.2.js
+c:\inetpub\wwwroot\Ci40_1\Scripts\jquery-ui-1.11.4.js
+c:\inetpub\wwwroot\Ci40_1\Scripts\jquery.maphilight.min.js
+
+c:\inetpub\wwwroot\Ci40_1\Backup
+c:\inetpub\wwwroot\Ci40_1\App_Data
+c:\inetpub\wwwroot\Ci40_1\images
+
+c:\inetpub\wwwroot\Ci40_1\web.config
