@@ -1,0 +1,11 @@
+﻿7/29/2015
+
+- Update Users.aspx, so updating of Locked, Approve, Roles can also be done on UI.
+- added Application name "/Ci40" to web.config.
+  - when adding a new application:
+    - first need to register a user "admin", 
+	- then in ~/Admin/web.config, allow all users access
+	- in ~/Admin/Roles.aspx, add role "Administrator", add "admin" to this role.
+	- in ~/Admin/web.config, allow users access to "Administrator" role only.
+	- then you can use the ~/Admin folder to manage users and roles.
+	- Alternatively, you can do the initialization using web.config.

@@ -1,0 +1,1 @@
+ASP35_LDAP_Login - demonstrate LDAP login. ASP.NET 3.5 application.
