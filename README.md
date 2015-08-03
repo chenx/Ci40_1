@@ -65,7 +65,8 @@ Either The coding logic is the same, or the function is based on pure html/javas
 <h1>
     Functions demonstrated
 </h1>
-    <ul>
+
+<ul>
     <li>Admin Functions (~/Admin)
         <ul>
         <li>Manage Roles (use asp.net Roles, ~/Admin/Roles.aspx)</li>
@@ -177,7 +178,7 @@ Either The coding logic is the same, or the function is based on pure html/javas
         <li>Modified from: <a href="https://css-tricks.com/css3-progress-bars/">https://css-tricks.com/css3-progress-bars/</a></li>
         </ul>
     </li>
-    </ul>
+</ul>
 
 
 <h1>To-do list</h1>
