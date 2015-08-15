@@ -34,7 +34,7 @@ public partial class Admin_UserProfile : System.Web.UI.Page
     private void init() {
         ProfileCommon user = (ProfileCommon)ProfileCommon.Create(UserName, false);
         ClsProfile p = new ClsProfile();
-        lblMembership.Text = p.getMembershipInfo(UserName, false, true);
+        lblMembership.Text = p.getMembershipInfo(UserName, true, false);
         lblContent.Text = p.getProfileView(user);
     }
 }

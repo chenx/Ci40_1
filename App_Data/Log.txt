@@ -1,4 +1,9 @@
-﻿7/29/2015
+﻿8/14/2015
+
+- added admin/reset_password, and delete_user functions.
+
+
+7/29/2015
 
 - Update Users.aspx, so updating of Locked, Approve, Roles can also be done on UI.
 - added Application name "/Ci40" to web.config.

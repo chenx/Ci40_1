@@ -482,3 +482,8 @@ span.IsRequired
     padding-left: 5px;
     color: Red;
 }
+
+.warning
+{
+    color: Red;
+}

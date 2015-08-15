@@ -17,7 +17,7 @@ public partial class Account_Profile : System.Web.UI.Page
 
     private void init() {
         ClsProfile p = new ClsProfile();
-        lblMembership.Text = p.getMembershipInfo(User.Identity.Name, true);
+        lblMembership.Text = p.getMembershipInfo(User.Identity.Name, true, true);
         lblContent.Text = p.getProfileView(Profile);
     }
 }

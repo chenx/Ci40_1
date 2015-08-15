@@ -64,6 +64,9 @@
                 if (this.href == url) {
                     //alert(this.href + $(this).closest("li").html());
                     $(this).closest("li").addClass('active');
+                    // $(this).closest("li").parent(): top level li tag.
+                    //alert($(this).closest("li").parent().closest('li').html());
+                    //$(this).closest("li").parent().closest("li").addClass('active');
                 }
             });
 

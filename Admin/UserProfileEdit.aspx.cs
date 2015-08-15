@@ -44,7 +44,9 @@ public partial class Admin_UserProfileEdit : System.Web.UI.Page
 
     private void init()
     {
-        ProfileCommon p = (ProfileCommon)ProfileCommon.Create(UserName, false);
-        lblContent.Text = new ClsProfile().getProfileEdit(p, "USA");
+        ProfileCommon user = (ProfileCommon)ProfileCommon.Create(UserName, false);
+        ClsProfile p = new ClsProfile();
+        lblMembership.Text = p.getMembershipInfo(UserName, true, false);
+        lblContent.Text = p.getProfileEdit(user, "USA");
     }
 }

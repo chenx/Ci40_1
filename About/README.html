@@ -172,6 +172,15 @@ Either The coding logic is the same, or the function is based on pure html/javas
         <li>Menu separator (UI/SubMenu Test)</li>
         </ul>
     </li>
+    <li>Paging (no demo yet)
+        <ul>
+        <li>See: <a href="http://social.technet.microsoft.com/wiki/contents/articles/23811.paging-a-query-with-sql-server.aspx">http://social.technet.microsoft.com/wiki/contents/articles/23811.paging-a-query-with-sql-server.aspx</a></li>
+        <li>In the data optimization query by T-SQL has a considerable gain both using the ROW_NUMBER as use of OFFSET / FETCH, 
+        <br />but taking into account the analysis of these data we can see that the "script 3" query (using OFFSET / FETCH ) 
+        <br />may be the best option for large volumes of rows, if you use a SQL server 2012 version.
+        </li>
+        </ul>
+    </li>
     <li>Progress bar in jquery/css
         <ul>
         <li>Data/S.P. Computation</li>

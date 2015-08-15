@@ -80,7 +80,8 @@ public class ClsUtil
         if(Expression == null || Expression is DateTime)
             return false;
 
-        if(Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal || Expression is Single || Expression is Double || Expression is Boolean)
+        if(Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal 
+            || Expression is Single || Expression is Double || Expression is Boolean)
             return true;
 
         try 
@@ -108,4 +109,33 @@ public class ClsUtil
         return System.IO.Path.GetFileName(Request.PhysicalPath);
     }
 
+
+    public static bool IsAlphanumeric(char c) { 
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
+    }
+
+
+    /// <summary>
+    /// Return the number of alphanumeric characters in a given string.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static int CountAlphanumericCharacters(string s) {
+        int count = 0;
+        for (int i = 0, n = s.Length; i < n; ++i) {
+            count += IsAlphanumeric(s[i]) ? 1 : 0;
+        }
+        return count;
+    }
+
+
+    /// <summary>
+    /// Return the number of non-alphanumeric characters in a given string.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static int CountNonAlphanumericCharacters(string s)
+    {
+        return s.Length - CountAlphanumericCharacters(s);
+    }
 }

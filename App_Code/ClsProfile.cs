@@ -32,39 +32,45 @@ public class ClsProfile
         this.DEBUG = DEBUG;
     }
 
-    public string getMembershipInfo(string username, bool IsSelf=false) {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="username"></param>
+    /// <param name="IsSelfProfile">If true, this function is called from self Profile page.</param>
+    /// <returns></returns>
+    public string getMembershipInfo(string username, bool IsSelfProfile, bool ShowEmailEditLink) {
         string s = "";
 
         // Admin cannot reset user password without providing user's current password.
         // So it seems pointless to add this:
         // <b>Password:</b> [ <a href=""ChangePassword.aspx{2}"">Update</a> ]<br/>
 
-        string emailEditParam = IsSelf ? "" : ("?u=" + username);
+        string emailEditParam = IsSelfProfile ? "" : ("?u=" + username);
+        string emailEditLink = ShowEmailEditLink ? string.Format(" [ <a href=\"EmailEdit.aspx{0}\">Update</a> ]", emailEditParam) : "";
+        string resetPwdLink = IsSelfProfile ? "" : ResetPwdLink(username);
+        string deleteLink = IsSelfProfile ? "" : DeleteMemberLink(username);
         s = string.Format(@"
 <p>
 <b>User Name:</b> {0} <br/>
-<b>Email: </b> {1} [ <a href=""EmailEdit.aspx{2}"">Update</a> ]<br/>
+<b>Email: </b> {1} &nbsp; {2} <br/>
 {3}
+{4}
+{5}
 </p>
-", username, Membership.GetUser(username).Email, emailEditParam, getMemberRoles(username));
+", username, Membership.GetUser(username).Email, emailEditLink, ClsMembership.getMemberRoles(username), resetPwdLink, deleteLink);
 
         return s;
     }
 
-    public string getMemberRoles(string username) {
-        string[] roles = Roles.GetRolesForUser(username);
-        string s;
-        if (roles.Length == 0) {
-            s = "<b>Role:</b> (none)";
-        }
-        else if (roles.Length == 1) {
-            s = "<b>Role:</b> " + roles[0];
-        }
-        else {
-            s = "<b>Roles:</b> " + ClsConvert.ArrayToStringList(roles, ", ");
-        }
-
+    private string DeleteMemberLink(string username) {
+        //string s = "<br/>[ <a href=\"?u=" + username + "&action=delete\" onclick=\"return confirm('Are you sure to permanently delete this user?');\">Delete User</a> ]";
+        string s = "<br/><a href=\"DeleteUser.aspx?u=" + username + "\" onclick=\"\">Delete User</a>";
         return s;
+    }
+
+    private string ResetPwdLink(string username) {
+        string s = "<br/><a href=\"ResetPwd.aspx?u=" + username + "\" onclick=\"\">Reset Password</a>";
+        return s;    
     }
 
     public static ClsProfileEntry[] ProfilePropertyCollection {

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 
-public partial class Account_EmailEdit : System.Web.UI.Page
+public partial class Admin_ResetPwd : System.Web.UI.Page
 {
     private string UserName;
 
@@ -27,10 +27,10 @@ public partial class Account_EmailEdit : System.Web.UI.Page
         MembershipUser u = Membership.GetUser(UserName);
         string CurrentEmail = u == null ? "" : u.Email;
         string s = string.Format(@"
-<h1><a href=""Users.aspx"">Users</a> &gt; <a href=""UserProfile.aspx?u={0}"">User Profile</a> &gt; Edit Email</h1>
+<h1><a href=""Users.aspx"">Users</a> &gt; <a href=""UserProfile.aspx?u={0}"">User Profile</a> &gt; Reset Password</h1>
 <p>
 <b>User Name:</b> {0} <br/>
-<b>Current Email:</b> {1} <br/>
+<b>Email:</b> {1} <br/>
 {2}
 </p>
 ", UserName, CurrentEmail, ClsMembership.getMemberRoles(UserName));
@@ -39,7 +39,28 @@ public partial class Account_EmailEdit : System.Web.UI.Page
     }
 
     protected void btnSubmit_OnClick(object sender, EventArgs e) {
-        new ClsEmail().UpdateEmail(txtNewEmail.Text.Trim(), UserName, lblInfo);
-        init();
+        string pwd = Password.Text;
+        string pwd2 = ConfirmPassword.Text;
+
+        List<string> errors = ClsMembership.ValidatePassword(pwd, pwd2);
+
+        int n;
+        if ((n = errors.Count) > 0)
+        {
+            string msg = "";
+            for (int i = 0; i < n; ++i) {
+                msg += string.Format("<li>{0}</li>", errors[i]);
+            }
+            msg = "<ul>" + msg + "</ul>";
+            ErrorMessage.Text = msg;
+            lblInfo.Text = "";
+        }
+        else
+        {
+            ErrorMessage.Text = "";
+            ClsMembership.ResetPassword(UserName, pwd);
+            lblInfo.ForeColor = System.Drawing.Color.Green;
+            lblInfo.Text = "The user's password has been successfully reset.";
+        }
     }
 }
